@@ -14,19 +14,21 @@ import net.sf.json.JSONSerializer;
 
 public class ShowclixMain {
 	public static final String SHOWCLIX_EVENTS_URL = "http://api.showclix.com/Seller/16886/events";
-	public static final long THRESHOLD_MILLIS = 5000;
+	public static final long DEFAULT_THRESHOLD_MILLIS = 5000; // 5 seconds
 	public static final long WAIT_TIME_MILLIS = 1000;
 	
 	@SuppressWarnings("unchecked")
 	public static void main(String[] args) throws IOException, InterruptedException {
 		URL url = new URL(SHOWCLIX_EVENTS_URL);
 		
+		long thresholdMillis = args.length > 0 ? Long.parseLong(args[0]) * 1000 : DEFAULT_THRESHOLD_MILLIS;
+		
 		Status status = new Status();
 		int latestId = 0;
 		long lastCheck = 0;
 		for (;;) {
 			try {
-				if (System.currentTimeMillis() - lastCheck >= THRESHOLD_MILLIS) {
+				if (System.currentTimeMillis() - lastCheck >= thresholdMillis) {
 					HttpURLConnection httpCon = (HttpURLConnection) url.openConnection();
 				    httpCon.addRequestProperty("User-Agent", "Mozilla/4.0");
 					BufferedReader reader = new BufferedReader(new InputStreamReader(httpCon.getInputStream()));
