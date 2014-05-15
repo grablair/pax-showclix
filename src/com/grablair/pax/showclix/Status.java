@@ -1,7 +1,11 @@
 package com.grablair.pax.showclix;
 
+import javax.swing.GroupLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.LayoutStyle;
+import javax.swing.SwingConstants;
+import javax.swing.WindowConstants;
 
 public class Status extends JFrame {
 
@@ -20,25 +24,21 @@ public class Status extends JFrame {
 	
 	public void setLatestShowclixCheck(long millis) {
 		latestShowclixTime.setText("Latest Showclix Check: " + (millis/1000) + " seconds ago");
-		
 		pack();
 	}
 	
 	public void setTotalEventCount(int count) {
 		totalEventCount.setText("Total Event Count: " + count);
-		
 		pack();
 	}
 	
 	public void setLatestURL(String url) {
 		latestEventURL.setText("Latest Event URL: " + url);
-		
 		pack();
 	}
 	
 	public void setLatestEvent(String url) {
 		latestEvent.setText("Latest Event: " + url);
-		
 		pack();
 	}
 	
@@ -49,10 +49,10 @@ public class Status extends JFrame {
 		latestEvent = new JLabel();
 		latestEventURL = new JLabel();
 		
-		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		
-		title.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-		title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+		title.setFont(new java.awt.Font("Tahoma", 0, 24));
+		title.setHorizontalAlignment(SwingConstants.CENTER);
 		title.setText("PAX Showclix Status");
 		
 		latestShowclixTime.setText("Latest Showclix Check: ");
@@ -60,13 +60,13 @@ public class Status extends JFrame {
 		latestEvent.setText("Latest Event: ");
 		latestEventURL.setText("Latest Event URL: ");
 		
-		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+		javax.swing.GroupLayout layout = new GroupLayout(getContentPane());
 	    getContentPane().setLayout(layout);
 	    layout.setHorizontalGroup(
-	      layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+	      layout.createParallelGroup(GroupLayout.Alignment.LEADING)
 	      .addGroup(layout.createSequentialGroup()
 	        .addContainerGap()
-	        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+	        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
 	          .addComponent(title)
 	          .addComponent(latestShowclixTime)
 	          .addComponent(totalEventCount)
@@ -75,17 +75,17 @@ public class Status extends JFrame {
 	        .addContainerGap())
 	    );
 	    layout.setVerticalGroup(
-	      layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+	      layout.createParallelGroup(GroupLayout.Alignment.LEADING)
 	      .addGroup(layout.createSequentialGroup()
 	        .addContainerGap()
 	        .addComponent(title)
 	        .addGap(18, 18, 18)
 	        .addComponent(latestShowclixTime)
-	        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+	        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
 	        .addComponent(totalEventCount)
-	        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+	        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
 	        .addComponent(latestEvent)
-	        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+	        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
 	        .addComponent(latestEventURL)
 	        .addContainerGap())
 	    );
